@@ -1,13 +1,12 @@
-package dao.impl;
+package com.rojo.ClinicaOdontologia.dao.impl;
 
-import dao.IDao;
-import db.H2Connection;
-import model.Domicilio;
-import model.Paciente;
+import com.rojo.ClinicaOdontologia.db.H2Connection;
+import com.rojo.ClinicaOdontologia.dao.IDao;
+import com.rojo.ClinicaOdontologia.model.Domicilio;
+import com.rojo.ClinicaOdontologia.model.Paciente;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -114,7 +113,7 @@ public class DaoH2Paciente implements IDao<Paciente> {
     }
 
     @Override
-    public List<Paciente> listaTodos() {
+    public List<Paciente> listarTodos() {
         Connection connection = null;
         List<Paciente> pacientes = new ArrayList<>();
         Paciente pacienteDesdeDB = null;

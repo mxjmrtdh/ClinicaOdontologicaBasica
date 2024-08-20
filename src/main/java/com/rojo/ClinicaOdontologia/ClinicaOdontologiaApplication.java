@@ -1,6 +1,6 @@
 package com.rojo.ClinicaOdontologia;
 
-import db.H2Connection;
+import com.rojo.ClinicaOdontologia.db.H2Connection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

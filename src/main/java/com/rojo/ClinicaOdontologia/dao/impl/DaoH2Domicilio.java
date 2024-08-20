@@ -1,8 +1,8 @@
-package dao.impl;
+package com.rojo.ClinicaOdontologia.dao.impl;
 
-import dao.IDao;
-import db.H2Connection;
-import model.Domicilio;
+import com.rojo.ClinicaOdontologia.db.H2Connection;
+import com.rojo.ClinicaOdontologia.dao.IDao;
+import com.rojo.ClinicaOdontologia.model.Domicilio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -98,7 +98,7 @@ public class DaoH2Domicilio implements IDao<Domicilio> {
     }
 
     @Override
-    public List<Domicilio> listaTodos() {
+    public List<Domicilio> listarTodos() {
         return null;
     }
 

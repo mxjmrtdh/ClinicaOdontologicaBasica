@@ -1,4 +1,4 @@
-package model;
+package com.rojo.ClinicaOdontologia.model;
 
 import java.time.LocalDate;
 

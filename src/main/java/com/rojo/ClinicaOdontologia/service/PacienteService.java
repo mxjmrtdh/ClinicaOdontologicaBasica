@@ -1,7 +1,7 @@
-package service;
+package com.rojo.ClinicaOdontologia.service;
 
-import dao.IDao;
-import model.Paciente;
+import com.rojo.ClinicaOdontologia.dao.IDao;
+import com.rojo.ClinicaOdontologia.model.Paciente;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +22,6 @@ public class PacienteService {
         return pacienteIDao.buscarPorId(id);
     }
     public List<Paciente> buscarTodos(){
-        return pacienteIDao.listaTodos();
+        return pacienteIDao.listarTodos();
     }
 }

@@ -1,4 +1,4 @@
-package db;
+package com.rojo.ClinicaOdontologia.db;
 
 //import dh.backend.clinica.dao.impl.DaoH2Domicilio;
 import org.slf4j.Logger;

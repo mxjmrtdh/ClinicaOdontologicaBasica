@@ -1,7 +1,9 @@
 package com.rojo.ClinicaOdontologia;
 
-import dao.impl.DaoH2Paciente;
-import db.H2Connection;
+import com.rojo.ClinicaOdontologia.dao.impl.DaoH2Paciente;
+import com.rojo.ClinicaOdontologia.db.H2Connection;
+import com.rojo.ClinicaOdontologia.model.Domicilio;
+import com.rojo.ClinicaOdontologia.model.Paciente;
 import model.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -9,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
-import service.PacienteService;
+import com.rojo.ClinicaOdontologia.service.PacienteService;
 
 import java.time.LocalDate;
 import java.util.List;

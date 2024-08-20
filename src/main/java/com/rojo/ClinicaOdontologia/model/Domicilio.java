@@ -1,4 +1,4 @@
-package model;
+package com.rojo.ClinicaOdontologia.model;
 
 public class Domicilio {
     private Integer id;
