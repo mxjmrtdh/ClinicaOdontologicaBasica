@@ -1,13 +1,14 @@
 package com.rojo.ClinicaOdontologia.controller;
 
-import com.rojo.ClinicaOdontologia.model.Paciente;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import com.rojo.ClinicaOdontologia.service.PacienteService;
 
-@Controller
+import com.rojo.ClinicaOdontologia.model.Paciente;
+import com.rojo.ClinicaOdontologia.service.PacienteService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/paciente")
 public class PacienteController {
     private PacienteService pacienteService;
 
@@ -15,12 +16,35 @@ public class PacienteController {
         this.pacienteService = pacienteService;
     }
 
-    @GetMapping("/prueba")
-    public String buscarPaciente(Model model, @RequestParam Integer id){
-        Paciente paciente = pacienteService.buscarPorId(id);
+    //POST
+    @PostMapping("/guardar")
+    public Paciente guardarPaciente(@RequestBody Paciente paciente){
+        return pacienteService.guardarPaciente(paciente);
+    }
 
-        model.addAttribute("nombre", paciente.getNombre());
-        model.addAttribute("apellido", paciente.getApellido());
-        return "index";
+    //PUT
+    @PutMapping("/modificar")
+    public String modificarPaciente(@RequestBody Paciente paciente){
+        pacienteService.modificarPaciente(paciente);
+        return "el paciente "+ paciente.getId() + " fue modificado";
+    }
+
+    //DELETE
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarPaciente(@PathVariable Integer id){
+        pacienteService.eliminarPaciente(id);
+        return "el paciente "+ id + " fue eliminado";
+    }
+
+    //GET
+    @GetMapping("/buscar/{id}")
+    public Paciente buscarPorId(@PathVariable Integer id){
+        return pacienteService.buscarPorId(id);
+    }
+
+    //GET
+    @GetMapping("/buscartodos")
+    public List<Paciente> buscarTodos(){
+        return pacienteService.buscarTodos();
     }
 }
