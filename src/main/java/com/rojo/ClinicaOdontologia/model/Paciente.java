@@ -1,5 +1,7 @@
 package com.rojo.ClinicaOdontologia.model;
 
+import com.rojo.ClinicaOdontologia.utils.GsonProvider;
+
 import java.time.LocalDate;
 
 public class Paciente {
@@ -77,13 +79,6 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "id=" + id +
-                ", apellido='" + apellido + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", dni='" + dni + '\'' +
-                ", fechaIngreso=" + fechaIngreso +
-                ", domicilio=" + domicilio +
-                '}';
+        return GsonProvider.getGson().toJson(this);
     }
 }

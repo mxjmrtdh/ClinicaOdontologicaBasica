@@ -1,10 +1,15 @@
 package com.rojo.ClinicaOdontologia.model;
 
+import com.rojo.ClinicaOdontologia.utils.GsonProvider;
+
 public class Odontologo {
     private Integer id;
     private Integer numeroMatricula;
     private String Nombre;
     private String Apellido;
+
+    public Odontologo() {
+    }
 
     public Odontologo(Integer id, Integer numeroMatricula, String nombre, String apellido) {
         this.id = id;
@@ -53,11 +58,6 @@ public class Odontologo {
 
     @Override
     public String toString() {
-        return "Odontologo{" +
-                "id=" + id +
-                ", numeroMatricula=" + numeroMatricula +
-                ", Nombre='" + Nombre + '\'' +
-                ", Apellido='" + Apellido + '\'' +
-                '}';
+        return GsonProvider.getGson().toJson(this);
     }
 }
