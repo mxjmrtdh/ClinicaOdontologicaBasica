@@ -4,7 +4,6 @@ import com.rojo.ClinicaOdontologia.dao.impl.DaoH2Paciente;
 import com.rojo.ClinicaOdontologia.db.H2Connection;
 import com.rojo.ClinicaOdontologia.model.Domicilio;
 import com.rojo.ClinicaOdontologia.model.Paciente;
-import model.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
