@@ -36,14 +36,14 @@ public class TurnoService {
     }
 
     public List<Turno> buscarTodos(){
-        return turnoIDao.listaTodos();
+        return turnoIDao.listarTodos();
     }
 
-    void modificarTurno(Turno turno){
+    public void modificarTurno(Turno turno){
         turnoIDao.modificar(turno);
     }
 
-    void eliminarTurno(Integer id){
+    public void eliminarTurno(Integer id){
         turnoIDao.eliminar(id);
     }
 
