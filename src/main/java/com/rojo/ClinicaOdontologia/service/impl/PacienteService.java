@@ -1,6 +1,7 @@
 package com.rojo.ClinicaOdontologia.service.impl;
 
 import com.rojo.ClinicaOdontologia.entity.Paciente;
+import com.rojo.ClinicaOdontologia.exception.ResourceNotFoundException;
 import com.rojo.ClinicaOdontologia.repository.IPacienteRepository;
 import com.rojo.ClinicaOdontologia.service.IPacienteService;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,21 @@ public class PacienteService implements IPacienteService {
 
     @Override
     public void eliminarPaciente(Integer id) {
-        pacienteRepository.deleteById(id);
+        Optional<Paciente> pacienteEncontrado = buscarPorId(id);
+        if(pacienteEncontrado.isPresent()){
+            pacienteRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Paciente no encontrado");
+        }
+    }
+
+    @Override
+    public List<Paciente> buscarPorApellidoyNombre(String apellido, String nombre) {
+        return pacienteRepository.findByApellidoAndNombre(apellido, nombre);
+    }
+
+    @Override
+    public List<Paciente> buscarPorUnaParteApellido(String parte){
+        return pacienteRepository.buscarPorParteApellido(parte);
     }
 }

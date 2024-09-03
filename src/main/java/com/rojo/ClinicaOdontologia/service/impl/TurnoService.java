@@ -8,10 +8,13 @@ import com.rojo.ClinicaOdontologia.dto.response.TurnoResponseDto;
 import com.rojo.ClinicaOdontologia.entity.Odontologo;
 import com.rojo.ClinicaOdontologia.entity.Paciente;
 import com.rojo.ClinicaOdontologia.entity.Turno;
+import com.rojo.ClinicaOdontologia.exception.ResourceNotFoundException;
 import com.rojo.ClinicaOdontologia.repository.ITurnoRepository;
 import com.rojo.ClinicaOdontologia.service.IOdontologoService;
 import com.rojo.ClinicaOdontologia.service.IPacienteService;
 import com.rojo.ClinicaOdontologia.service.ITurnoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,7 @@ import java.util.Optional;
 
 @Service
 public class TurnoService implements ITurnoService {
+    private final Logger logger = LoggerFactory.getLogger(TurnoService.class);
     private ITurnoRepository turnoRepository;
     private IPacienteService pacienteService;
     private IOdontologoService odontologoService;
@@ -48,6 +52,8 @@ public class TurnoService implements ITurnoService {
             turno.setPaciente(paciente.get());
             turno.setOdontologo(odontologo.get());
             turno.setFecha(LocalDate.parse(turnoRequestDto.getFecha()));
+
+            logger.info(odontologo.get().getApellido());
 
             // aca obtengo el turno persistido con el id
             turnoDesdeBD = turnoRepository.save(turno);
@@ -97,7 +103,13 @@ public class TurnoService implements ITurnoService {
 
     @Override
     public void eliminarTurno(Integer id){
-        turnoRepository.deleteById(id);
+        Optional<Turno> turnoEncontrado = turnoRepository.findById(id);
+        if(turnoEncontrado.isPresent()){
+            turnoRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Turno no encontrado");
+        }
+
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.rojo.ClinicaOdontologia.service.impl;
 import com.rojo.ClinicaOdontologia.entity.Odontologo;
 import com.rojo.ClinicaOdontologia.repository.IOdontologoRepository;
 import com.rojo.ClinicaOdontologia.service.IOdontologoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +11,12 @@ import java.util.Optional;
 
 @Service
 public class OdontologoService implements IOdontologoService {
+    @Autowired
     private IOdontologoRepository odontologoRepository;
 
-    public OdontologoService(IOdontologoRepository odontologoRepository) {
-        this.odontologoRepository = odontologoRepository;
-    }
+//    public OdontologoService(IOdontologoRepository odontologoRepository) {
+//        this.odontologoRepository = odontologoRepository;
+//    }
 
     @Override
     public Odontologo guardarOdontologo(Odontologo odontologo) {

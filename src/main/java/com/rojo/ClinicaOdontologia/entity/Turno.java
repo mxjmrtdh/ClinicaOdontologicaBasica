@@ -1,5 +1,6 @@
 package com.rojo.ClinicaOdontologia.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.rojo.ClinicaOdontologia.utils.GsonProvider;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,17 +22,27 @@ public class Turno {
     private Integer id;
 
     @ManyToOne
-    //@JsonBackReference(value = "paciente-turno")
+    @JsonBackReference(value = "paciente-turno")
     private Paciente paciente;
 
     @ManyToOne
-    //@JsonBackReference(value = "odontologo-turno")
+    @JsonBackReference(value = "odontologo-turno")
     private Odontologo odontologo;
     private LocalDate fecha;
 
 
+//    @Override
+//    public String toString() {
+//        return GsonProvider.getGson().toJson(this);
+//    }
+
     @Override
     public String toString() {
-        return GsonProvider.getGson().toJson(this);
+        return "Turno{" +
+                "id=" + id +
+                ", paciente=" + paciente +
+                ", odontologo=" + odontologo +
+                ", fecha=" + fecha +
+                '}';
     }
 }

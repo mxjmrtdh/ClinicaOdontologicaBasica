@@ -1,6 +1,7 @@
 package com.rojo.ClinicaOdontologia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.rojo.ClinicaOdontologia.utils.GsonProvider;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,8 +31,8 @@ public class Paciente {
     private Domicilio domicilio;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.REMOVE)
-    //@JsonManagedReference(value = "paciente-turno")
-    @JsonIgnore
+    @JsonManagedReference(value = "paciente-turno")
+    //@JsonIgnore
     private Set<Turno> turnoSet;
 
     @Override

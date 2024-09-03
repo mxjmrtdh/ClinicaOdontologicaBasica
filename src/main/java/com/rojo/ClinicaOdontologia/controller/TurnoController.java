@@ -4,9 +4,7 @@ package com.rojo.ClinicaOdontologia.controller;
 import com.rojo.ClinicaOdontologia.dto.request.TurnoModifyDto;
 import com.rojo.ClinicaOdontologia.dto.request.TurnoRequestDto;
 import com.rojo.ClinicaOdontologia.dto.response.TurnoResponseDto;
-import com.rojo.ClinicaOdontologia.entity.Turno;
 import com.rojo.ClinicaOdontologia.service.ITurnoService;
-import com.rojo.ClinicaOdontologia.service.impl.TurnoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/turno")
+@RequestMapping("/turnos")
 public class TurnoController {
     private ITurnoService turnoService;
 
@@ -41,5 +39,11 @@ public class TurnoController {
     public ResponseEntity<TurnoResponseDto> buscarTurnoPorApellido(@PathVariable String apellido){
         Optional<TurnoResponseDto> turno = turnoService.buscarTurnosPorPaciente(apellido);
         return ResponseEntity.ok(turno.get());
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarTurno(@PathVariable Integer id){
+        turnoService.eliminarTurno(id);
+        return ResponseEntity.ok("{\"mensaje\": \"El turno fue eliminado\"}");
     }
 }
