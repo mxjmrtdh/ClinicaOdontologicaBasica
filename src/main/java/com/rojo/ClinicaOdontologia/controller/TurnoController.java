@@ -1,6 +1,9 @@
 package com.rojo.ClinicaOdontologia.controller;
 
 
+import com.rojo.ClinicaOdontologia.dto.request.TurnoModifyDto;
+import com.rojo.ClinicaOdontologia.dto.request.TurnoRequestDto;
+import com.rojo.ClinicaOdontologia.dto.response.TurnoResponseDto;
 import com.rojo.ClinicaOdontologia.entity.Turno;
 import com.rojo.ClinicaOdontologia.service.ITurnoService;
 import com.rojo.ClinicaOdontologia.service.impl.TurnoService;
@@ -8,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/turno")
@@ -19,12 +23,23 @@ public class TurnoController {
     }
 
     @PostMapping("/guardar")
-    public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno){
-        return ResponseEntity.ok(turnoService.guardarTurno(turno));
+    public ResponseEntity<TurnoResponseDto> guardarTurno(@RequestBody TurnoRequestDto turnoRequestDto){
+        return ResponseEntity.ok(turnoService.guardarTurno(turnoRequestDto));
     }
 
     @GetMapping("/buscartodos")
-    public ResponseEntity<List<Turno>> buscarTodos(){
+    public ResponseEntity<List<TurnoResponseDto>> buscarTodos(){
         return ResponseEntity.ok(turnoService.buscarTodos());
+    }
+
+    @PutMapping("/modificar")
+    public ResponseEntity<String> modificarTurno(@RequestBody TurnoModifyDto turnoModifyDto){
+        turnoService.modificarTurno(turnoModifyDto);
+        return ResponseEntity.ok("{\"mensaje\": \"El turno fue modificado\"}");
+    }
+    @GetMapping("/buscarTurnoApellido/{apellido}")
+    public ResponseEntity<TurnoResponseDto> buscarTurnoPorApellido(@PathVariable String apellido){
+        Optional<TurnoResponseDto> turno = turnoService.buscarTurnosPorPaciente(apellido);
+        return ResponseEntity.ok(turno.get());
     }
 }
