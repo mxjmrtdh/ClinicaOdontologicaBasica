@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/turnos")
+@RequestMapping("/turno")
 public class TurnoController {
     private ITurnoService turnoService;
 
