@@ -71,8 +71,13 @@ public class TurnoService implements ITurnoService {
     @Override
     public Optional<TurnoResponseDto> buscarPorId(Integer id) {
         Optional<Turno> turno = turnoRepository.findById(id);
-        TurnoResponseDto turnoRespuesta = convertirTurnoEnResponse(turno.get());
-        return Optional.of(turnoRespuesta);
+        if(turno.isPresent()){
+            TurnoResponseDto turnoRespuesta = convertirTurnoEnResponse(turno.get());
+            return Optional.of(turnoRespuesta);
+        } else {
+            throw new ResourceNotFoundException("Turno no encontrado, revise por favor");
+        }
+
     }
 
     @Override
@@ -83,7 +88,9 @@ public class TurnoService implements ITurnoService {
             // manera manual
             //turnosRespuesta.add(obtenerTurnoResponse(t));
             // model mapper
-            turnosRespuesta.add(convertirTurnoEnResponse(t));
+            TurnoResponseDto turnoRespuesta =convertirTurnoEnResponse(t);
+            logger.info("turno "+ turnoRespuesta);
+            turnosRespuesta.add(turnoRespuesta);
         }
         return turnosRespuesta;
     }

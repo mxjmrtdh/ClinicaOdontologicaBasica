@@ -21,7 +21,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 @Transactional
 public class TurnoServiceTest {
     static final Logger logger = LoggerFactory.getLogger(TurnoServiceTest.class);
@@ -42,7 +42,6 @@ public class TurnoServiceTest {
     @Test
     @DisplayName("Testear que un turno fue cargado correctamente")
     void caso1(){
-
         assertNotNull(turnoDesdeDb.getId());
     }
 
