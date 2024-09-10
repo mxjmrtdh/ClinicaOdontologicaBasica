@@ -14,7 +14,7 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <title>Listado pacientes</title>
+    <title>Listado turnos</title>
   </head>
   <body>
     <nav
@@ -73,25 +73,22 @@
       </div>
     </nav>
     <div class="container-xl">
-      <h1 class="mt-5">Pacientes</h1>
-      <table class="table table-striped-columns" id="pacienteTable">
+      <h1 class="mt-5">Turnos</h1>
+      <table class="table table-striped-columns" id="turnoTable">
         <thead>
           <tr>
             <th>Orden</th>
-            <th>Apellido</th>
-            <th>Nombre</th>
-            <th>DNI</th>
-            <th>Fecha de Ingreso</th>
-            <th>Calle</th>
-            <th>Numero</th>
-            <th>Localidad</th>
-            <th>Provincia</th>
+            <th>Odontólogo</th>
+            <th>Paciente</th>
+<!--            <th>DNI</th>-->
+            <th>Fecha</th>
+            <th>Hora</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
-    <!-- Modal para editar paciente -->
+    <!-- Modal para editar turno -->
     <div
       class="modal fade"
       id="editModal"
@@ -102,7 +99,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editModalLabel">Modificar Paciente</h5>
+            <h5 class="modal-title" id="editModalLabel">Modificar Turno</h5>
             <button
               type="button"
               class="btn-close"
@@ -161,24 +158,7 @@
                   required
                 />
               </div>
-              <div class="mb-3">
-                <label for="editLocalidad" class="form-label">Localidad</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="editLocalidad"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="editProvincia" class="form-label">Provincia</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="editProvincia"
-                  required
-                />
-              </div>
+
               <button type="submit" class="btn btn-primary">
                 Guardar cambios
               </button>
@@ -188,6 +168,6 @@
       </div>
     </div>
 
-    <script src="js/listarPacientes.js"></script>
+    <script src="js/listarTurnos.js"></script>
   </body>
 </html>
