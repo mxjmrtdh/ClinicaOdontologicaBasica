@@ -1,4 +1,4 @@
-const form = document.getElementById("agregarForm");
+const form = document.getElementById("agregarOdontologoForm");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
