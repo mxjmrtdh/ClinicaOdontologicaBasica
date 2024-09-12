@@ -56,9 +56,9 @@ public class OdontologoService implements IOdontologoService {
         return odontologoRepository.findBynumeroMatricula(numeroMatricula);
     }
 
-    @Override
-    public List<Odontologo> buscarPorParteNombre(String parteNombre) {
-        return odontologoRepository.buscarPorParteNombre(parteNombre);
-    }
+//    @Override
+//    public List<Odontologo> buscarPorParteNombre(String parteNombre) {
+//        return odontologoRepository.buscarPorParteNombre(parteNombre);
+//    }
 
 }

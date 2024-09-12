@@ -5,25 +5,16 @@ form.addEventListener("submit", function (event) {
 
   const apellido = document.getElementById("apellido").value;
   const nombre = document.getElementById("nombre").value;
-  const matricula = document.getElementById("matricula").value;
-  const fecha = document.getElementById("fecha").value;
-//  const calle = document.getElementById("calle").value;
-//  const numero = document.getElementById("numero").value;
-//  const localidad = document.getElementById("localidad").value;
-//  const provincia = document.getElementById("provincia").value;
+  const numeroMatricula = document.getElementById("matricula").value;
+
 
   // llamando al endpoint de agregar
   const datosFormulario = {
     nombre,
     apellido,
-    matricula,
-    fechaIngreso: fecha,
-//    domicilio: {
-//      calle,
-//      numero,
-//      localidad,
-//      provincia,
-    },
+    numeroMatricula
+
+
   };
 
   fetch(`odontologo/guardar`, {

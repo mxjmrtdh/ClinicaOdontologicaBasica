@@ -11,7 +11,7 @@ import java.util.List;
 public interface IOdontologoRepository extends JpaRepository<Odontologo, Integer> {
         List<Odontologo> findBynumeroMatricula(Integer numeroMatricula);
 
-        @Query("Select o from Odontologo o where LOWER(o.nombre) LIKE LOWER(CONCAT('%',:parteNombre,'%'))")
-        List<Odontologo> buscarPorParteNombre(String parteNombre);
+//        @Query("Select o from Odontologo o where LOWER(o.nombre) LIKE LOWER(CONCAT('%',:parteNombre,'%'))")
+//        List<Odontologo> buscarPorParteNombre(String parteNombre);
     }
 

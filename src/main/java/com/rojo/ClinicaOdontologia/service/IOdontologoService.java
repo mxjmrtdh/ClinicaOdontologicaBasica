@@ -18,5 +18,5 @@ public interface IOdontologoService {
 
     List<Odontologo> buscarPorMatricula(Integer numeroMatricula);
 
-    List<Odontologo> buscarPorParteNombre(String parteNombre);
+//    List<Odontologo> buscarPorParteNombre(String parteNombre);
 }
