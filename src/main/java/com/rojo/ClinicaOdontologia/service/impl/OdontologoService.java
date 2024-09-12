@@ -3,6 +3,7 @@ package com.rojo.ClinicaOdontologia.service.impl;
 import com.rojo.ClinicaOdontologia.entity.Odontologo;
 import com.rojo.ClinicaOdontologia.exception.ResourceNotFoundException;
 import com.rojo.ClinicaOdontologia.repository.IOdontologoRepository;
+import com.rojo.ClinicaOdontologia.repository.IPacienteRepository;
 import com.rojo.ClinicaOdontologia.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,6 @@ import java.util.Optional;
 public class OdontologoService implements IOdontologoService {
     @Autowired
     private IOdontologoRepository odontologoRepository;
-
-//    public OdontologoService(IOdontologoRepository odontologoRepository) {
-//        this.odontologoRepository = odontologoRepository;
-//    }
 
     @Override
     public Odontologo guardarOdontologo(Odontologo odontologo) {
@@ -53,4 +50,15 @@ public class OdontologoService implements IOdontologoService {
             throw new ResourceNotFoundException("Odontologo no encontrado");
         }
     }
+
+    @Override
+    public List<Odontologo> buscarPorMatricula(Integer numeroMatricula) {
+        return odontologoRepository.findBynumeroMatricula(numeroMatricula);
+    }
+
+    @Override
+    public List<Odontologo> buscarPorParteNombre(String parteNombre) {
+        return odontologoRepository.buscarPorParteNombre(parteNombre);
+    }
+
 }
