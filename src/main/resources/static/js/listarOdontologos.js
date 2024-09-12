@@ -46,15 +46,13 @@ editOdontologo = function (
   id,
   apellido,
   nombre,
-  matricula
+  numeroMatricula
 
 ) {
   currentOdontologoId = id;
-  currentMatriculaId = idMatricula;
   document.getElementById("editApellido").value = apellido;
   document.getElementById("editNombre").value = nombre;
-  document.getElementById("editMatricula").value = matricula;
-
+  document.getElementById("editMatricula").value = numeroMatricula;
   editModal.show();
 };
 
@@ -63,7 +61,7 @@ editForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const apellido = document.getElementById("editApellido").value;
   const nombre = document.getElementById("editNombre").value;
-  const matricula = document.getElementById("editMatricula").value;
+  const numeroMatricula = document.getElementById("editMatricula").value;
 
 
   //modificar un odontologo
@@ -76,7 +74,7 @@ editForm.addEventListener("submit", function (event) {
       id: currentOdontologoId,
       nombre,
       apellido,
-      matricula
+      numeroMatricula
 
     })
   })
@@ -88,7 +86,7 @@ editForm.addEventListener("submit", function (event) {
       editModal.hide();
     })
     .catch((error) => {
-      console.error("Error editando odontologo:", error);
+      console.error("Error editando odontólogo:", error);
     });
 });
 

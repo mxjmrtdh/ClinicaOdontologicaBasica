@@ -13,8 +13,12 @@ import java.util.Optional;
 
 @Service
 public class OdontologoService implements IOdontologoService {
-    @Autowired
+    //@Autowired
     private IOdontologoRepository odontologoRepository;
+
+    public OdontologoService(IOdontologoRepository odontologoRepository) {
+        this.odontologoRepository = odontologoRepository;
+    }
 
     @Override
     public Odontologo guardarOdontologo(Odontologo odontologo) {
@@ -51,10 +55,10 @@ public class OdontologoService implements IOdontologoService {
         }
     }
 
-    @Override
-    public List<Odontologo> buscarPorMatricula(Integer numeroMatricula) {
-        return odontologoRepository.findBynumeroMatricula(numeroMatricula);
-    }
+//    @Override
+//    public List<Odontologo> buscarPorMatricula(Integer numeroMatricula) {
+//        return odontologoRepository.findBynumeroMatricula(numeroMatricula);
+//    }
 
 //    @Override
 //    public List<Odontologo> buscarPorParteNombre(String parteNombre) {
